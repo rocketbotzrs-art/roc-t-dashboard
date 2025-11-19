@@ -1,1 +1,87 @@
+/* Base page styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #0d1117;
+  color: #e6edf3;
+}
 
+/* Page container */
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #161b22;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Header */
+h1 {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 25px;
+  color: #58a6ff;
+}
+
+/* Sections */
+.wallet-section,
+.balance-section,
+.mint-section {
+  margin-bottom: 25px;
+  padding: 15px;
+  background: #21262d;
+  border-radius: 8px;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #238636;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: #2ea043;
+}
+
+/* Mint inputs */
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: 1px solid #30363d;
+  background: #0d1117;
+  color: #e6edf3;
+}
+
+/* Status text */
+#walletStatus {
+  font-weight: bold;
+  color: #ffcc66;
+}
+
+/* Balance text */
+#balance {
+  font-size: 24px;
+  font-weight: bold;
+  color: #58a6ff;
+  margin-top: 10px;
+}
+
+/* Footer message */
+.footer {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.5;
+}
