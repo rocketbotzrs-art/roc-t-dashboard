@@ -1,1 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ROC-T Wallet Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
+<body>
+  <div class="container">
+    <h1>ROC-T Wallet Dashboard</h1>
+
+    <div class="wallet-section">
+      <button id="connectWallet">Connect Wallet</button>
+      <p>Status: <span id="walletStatus" class="status">Disconnected</span></p>
+    </div>
+
+    <div class="balance-section">
+      <h2>Your ROC-T Balance</h2>
+      <p id="balance">0</p>
+    </div>
+
+    <div class="mint-section">
+      <h2>Mint ROC-T</h2>
+      <input id="mintAmount" type="number" placeholder="Enter amount" />
+      <button id="mintBtn">Mint</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
