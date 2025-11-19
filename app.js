@@ -27,11 +27,11 @@ function saveState() {
   localStorage.setItem("roc_balance", rocBalance);
 }
 
-// Connect wallet
+// Connect / Disconnect (toggle)
 connectBtn.addEventListener("click", () => {
-  walletConnected = true;
-  saveState();
-  updateUI();
+    walletConnected = !walletConnected; // toggles true/false
+    saveState();
+    updateUI();
 });
 
 // Mint button logic
