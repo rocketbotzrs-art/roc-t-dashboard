@@ -10,7 +10,8 @@ const balanceEl = document.getElementById("balance");
 const connectBtn = document.getElementById("connectWallet");
 const mintBtn = document.getElementById("mintBtn");
 const mintInput = document.getElementById("mintAmount");
-
+const burnBtn = document.getElementById("burnBtn");
+const burnInput = document.getElementById("burnAmount");
 // Update UI
 function updateUI() {
   statusSpan.textContent = walletConnected
@@ -47,3 +48,23 @@ mintBtn.addEventListener("click", () => {
 
 // Load UI on page load
 updateUI();
+// Burn button logic
+burnBtn.addEventListener("click", () => {
+  if (!walletConnected) return alert("Connect wallet first");
+
+  const amount = parseInt(burnInput.value);
+
+  if (isNaN(amount) || amount <= 0) {
+    alert("Enter a valid amount to burn");
+    return;
+  }
+
+  if (amount > rocBalance) {
+    alert("You cannot burn more than your balance");
+    return;
+  }
+
+  rocBalance -= amount;
+  saveState();
+  updateUI();
+});
