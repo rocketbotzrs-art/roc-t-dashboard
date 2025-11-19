@@ -1,9 +1,8 @@
-// === ROC-T Demo Wallet with Local Storage ===
+// === ROC-T Demo Wallet (Local Storage Version) ===
 
 // Load saved state
 let walletConnected = localStorage.getItem("roc_walletConnected") === "true";
-let rocBalance = parseInt(localStorage.getItem("roc_balance") || "0", 10);
-if (isNaN(rocBalance)) rocBalance = 0;
+let rocBalance = parseInt(localStorage.getItem("roc_balance")) || 0;
 
 // Elements
 const statusSpan = document.getElementById("walletStatus");
@@ -16,77 +15,72 @@ const burnInput = document.getElementById("burnAmount");
 
 // Update UI
 function updateUI() {
-  statusSpan.textContent = walletConnected
-    ? "Connected (demo) — 0xROCKET...3093"
-    : "Disconnected";
+    statusSpan.textContent = walletConnected
+        ? "Connected (demo) — 0xROCKET...3093"
+        : "Disconnected";
 
-  // Optional: if you have .connected / .disconnected classes in CSS
-  statusSpan.classList.toggle("connected", walletConnected);
-  statusSpan.classList.toggle("disconnected", !walletConnected);
+    connectBtn.textContent = walletConnected
+        ? "Disconnect Wallet"
+        : "Connect Wallet";
 
-  // Change button label when connected / disconnected
-  connectBtn.textContent = walletConnected ? "Disconnect Wallet" : "Connect Wallet";
-
-  balanceEl.textContent = rocBalance;
+    balanceEl.textContent = rocBalance;
 }
 
 // Save state
 function saveState() {
-  localStorage.setItem("roc_walletConnected", walletConnected ? "true" : "false");
-  localStorage.setItem("roc_balance", String(rocBalance));
+    localStorage.setItem("roc_walletConnected", walletConnected);
+    localStorage.setItem("roc_balance", String(rocBalance));
 }
 
 // Connect / Disconnect toggle
 connectBtn.addEventListener("click", () => {
-  walletConnected = !walletConnected; // flip true <-> false
-  saveState();
-  updateUI();
+    walletConnected = !walletConnected;
+    saveState();
+    updateUI();
 });
 
-// Mint button logic
+// Mint logic
 mintBtn.addEventListener("click", () => {
-  if (!walletConnected) {
-    alert("Please connect your wallet first.");
-    return;
-  }
+    if (!walletConnected) {
+        alert("Please connect your wallet first.");
+        return;
+    }
 
-  const amount = parseInt(mintInput.value, 10);
-  if (isNaN(amount) || amount <= 0) {
-    alert("Enter a valid amount to mint");
-    return;
-  }
+    const amount = parseInt(mintInput.value, 10);
 
-  rocBalance += amount;
-  mintInput.value = "";
+    if (isNaN(amount) || amount <= 0) {
+        alert("Enter a valid amount to mint.");
+        return;
+    }
 
-  saveState();
-  updateUI();
+    rocBalance += amount;
+    saveState();
+    updateUI();
 });
 
-// Burn button logic
+// Burn logic
 burnBtn.addEventListener("click", () => {
-  if (!walletConnected) {
-    alert("Please connect your wallet first.");
-    return;
-  }
+    if (!walletConnected) {
+        alert("Please connect your wallet first.");
+        return;
+    }
 
-  const amount = parseInt(burnInput.value, 10);
-  if (isNaN(amount) || amount <= 0) {
-    alert("Enter a valid amount to burn");
-    return;
-  }
+    const amount = parseInt(burnInput.value, 10);
 
-  if (amount > rocBalance) {
-    alert("You cannot burn more than your balance.");
-    return;
-  }
+    if (isNaN(amount) || amount <= 0) {
+        alert("Enter a valid amount to burn.");
+        return;
+    }
 
-  rocBalance -= amount;
-  burnInput.value = "";
+    if (amount > rocBalance) {
+        alert("You cannot burn more than your balance.");
+        return;
+    }
 
-  saveState();
-  updateUI();
+    rocBalance -= amount;
+    saveState();
+    updateUI();
 });
 
-// Initial render
+// Load UI on start
 updateUI();
