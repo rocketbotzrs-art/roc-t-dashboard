@@ -1,38 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ROC-T Wallet Dashboard</title>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROC-T Wallet Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <div class="container">
-    <h1>ROC-T Wallet Dashboard</h1>
 
-    <div class="wallet-section">
-      <button id="connectWallet">Connect Wallet</button>
-      <p>Status: <span id="walletStatus" class="status">Disconnected</span></p>
+    <!-- BACKGROUND PATCH -->
+    <div class="bg-overlay"></div>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="header">
+            <img src="assets/file_00000000bccc720994b21e28f2c4c14e.png" class="patch-logo" />
+            <h1>ROC-T Wallet</h1>
+        </div>
+
+        <!-- WALLET CONNECT -->
+        <button id="connectWallet" class="btn-wallet">Connect Wallet</button>
+        <p id="walletAddress" class="wallet-address"></p>
+
+        <!-- BALANCE -->
+        <div class="balance-box">
+            <h2>Your ROC-T Balance:</h2>
+            <p id="balance">0</p>
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="action-row">
+            <button id="mintBtn" class="btn-action mint">Mint ROC-T</button>
+            <button id="burnBtn" class="btn-action burn">Burn ROC-T</button>
+        </div>
+
     </div>
 
-    <div class="balance-section">
-      <h2>Your ROC-T Balance</h2>
-      <p id="balance">0</p>
-    </div>
-
-    <div class="mint-section">
-      <h2>Mint ROC-T</h2>
-      <input id="mintAmount" type="number" placeholder="Enter amount" />
-      <button id="mintBtn">Mint</button>
-    </div>
-  </div>
-  <div class="burn-section">
-  <h2>Burn ROC-T</h2>
-  <input id="burnAmount" type="number" placeholder="Enter amount to burn" />
-  <button id="burnBtn" class="burn">Burn</button>
-  </div>
-
-  <script src="app.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
