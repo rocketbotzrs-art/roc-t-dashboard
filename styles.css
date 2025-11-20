@@ -1,87 +1,135 @@
-/* Base page styling */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #0d1117;
-  color: #e6edf3;
+/* BACKGROUND PATCH */
+.bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("assets/file_00000000bccc720994b21e28f2c4c14e.png");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.12;
+    filter: blur(3px);
+    z-index: -2;
 }
 
-/* Page container */
+/* Base Layout */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0d0f0b;       /* Dark camo */
+    color: #c7c7a4;
+    text-align: center;
+}
+
 .container {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
-  background: #161b22;
-  border-radius: 10px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+    margin: 40px auto;
+    padding: 20px;
 }
 
 /* Header */
-h1 {
-  text-align: center;
-  font-size: 26px;
-  margin-bottom: 25px;
-  color: #58a6ff;
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
 }
 
-/* Sections */
-.wallet-section,
-.balance-section,
-.mint-section {
-  margin-bottom: 25px;
-  padding: 15px;
-  background: #21262d;
-  border-radius: 8px;
+.patch-logo {
+    width: 160px;
+    margin-bottom: 10px;
+    animation: glow 4s infinite ease-in-out;
 }
 
-/* Buttons */
-button {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  background: #238636;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-top: 10px;
+/* Subtle glowing effect */
+@keyframes glow {
+    0% { filter: drop-shadow(0 0 1px #445) }
+    50% { filter: drop-shadow(0 0 12px #5f7f3a) }
+    100% { filter: drop-shadow(0 0 1px #445) }
 }
 
-button:hover {
-  background: #2ea043;
+/* Wallet Button */
+.btn-wallet {
+    padding: 12px 22px;
+    background: linear-gradient(145deg, #48543a, #20291a);
+    border: 1px solid #556044;
+    color: #dfe7cf;
+    font-size: 18px;
+    border-radius: 10px;
+    width: 80%;
+    margin-bottom: 15px;
+    transition: 0.25s;
 }
 
-/* Mint inputs */
-input, select {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border-radius: 6px;
-  border: 1px solid #30363d;
-  background: #0d1117;
-  color: #e6edf3;
+.btn-wallet:hover {
+    filter: brightness(1.3);
+    transform: translateY(-3px);
 }
 
-/* Status text */
-#walletStatus {
-  font-weight: bold;
-  color: #ffcc66;
+/* Balance */
+.balance-box {
+    background: rgba(25, 30, 20, 0.6);
+    border: 1px solid #556044;
+    padding: 18px;
+    border-radius: 12px;
+    margin: 20px auto;
+    width: 80%;
 }
 
-/* Balance text */
-#balance {
-  font-size: 24px;
-  font-weight: bold;
-  color: #58a6ff;
-  margin-top: 10px;
+.action-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
 }
 
-/* Footer message */
-.footer {
-  margin-top: 30px;
-  text-align: center;
-  font-size: 12px;
-  opacity: 0.5;
+/* ACTION BUTTONS */
+.btn-action {
+    padding: 12px 20px;
+    font-size: 18px;
+    border-radius: 12px;
+    width: 40%;
+    transition: 0.25s;
+    border: 1px solid rgb(60,80,50);
+}
+
+.mint {
+    background: #50653D;
+    color: #E4F8D2;
+}
+
+.burn {
+    background: #5b3b3b;
+    color: #ffdedc;
+}
+
+.btn-action:hover {
+    transform: translateY(-4px);
+    filter: brightness(1.2);
+}
+
+/* SUCCESS ANIMATIONS */
+.mint-success {
+    animation: mintFlash 0.6s;
+}
+
+@keyframes mintFlash {
+    0% { background-color: #80ff80; }
+    100% { background-color: #50653D; }
+}
+
+.burn-success {
+    animation: burnFlash 0.6s;
+}
+
+@keyframes burnFlash {
+    0% { background-color: #ff8080; }
+    100% { background-color: #5b3b3b; }
+}
+
+/* Wallet Address */
+.wallet-address {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-bottom: 20px;
 }
